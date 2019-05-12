@@ -74,7 +74,10 @@ app.post("/leads", (req, res) => {
     }
 
     return db.Leads.create({ name, email, contactNumber, comments })
-        .then((lead) => res.send(lead))
+        .then((lead) => res.json({
+            "success": true,
+            "lead": lead
+        }))
         .catch((err) => {
             console.log('ERROR: Failed to insert the new lead', JSON.stringify(lead))
             return res.status(500).json({
