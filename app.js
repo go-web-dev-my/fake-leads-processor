@@ -2,8 +2,10 @@ const express = require("express")
 const app = express()
 const bodyParser = require('body-parser')
 const db = require('./models')
+const cors = require('cors')
 
 app.use(bodyParser.json());
+app.use(cors())
 app.listen(3030, () => {
     console.log("Server is up and listening on 3030")
 })
